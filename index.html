@@ -19,9 +19,10 @@
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/reserve.css">
   <link rel="stylesheet" href="css/radio.css">
+  <link rel="stylesheet" href="css/footer.css">
 
 
-  /* подключен БЕЗ defer чтобы загружался и работал прелоадер */
+  <!-- подключен БЕЗ defer чтобы загружался и работал прелоадер -->
   <script src="js/scripts.js"></script>
 </head>
 
@@ -150,8 +151,8 @@
             <p class="about__item-description">Мы подстрижем вас на высшем уровне</p>
           </li>
           <li class="about__item about__item_master">
-            <h3 class="about__item-title">Мастера бород и усов</h3>
-            <p class="about__item-description">Мы заботливо уложим вашу бороду и усы</p>
+            <h3 class="about__item-title">Мастера бород и&nbsp;усов</h3>
+            <p class="about__item-description">Мы заботливо уложим вашу бороду и&nbsp;усы</p>
           </li>
           <li class="about__item about__item_guarantee">
             <h3 class="about__item-title">Гарантия качества</h3>
@@ -171,9 +172,9 @@
           <li class="reserve__item">Выберите удобный день и время</li>
         </ol>
 
-        <form class="reserve__form" action="">
+        <form class="reserve__form">
           <div class="reserve__form-container">
-            <fieldset class="reserve__fieldset">
+            <fieldset class="reserve__fieldset reserve__fieldset_service">
               <legend class="reserve__legend">Услуга</legend>
 
               <label class="radio">
@@ -212,8 +213,8 @@
               </label>
             </fieldset>
 
-            <fieldset class="reserve__fieldset">
-              <legend class="reserve__legend">Специалист</legend>
+            <fieldset class="reserve__fieldset" name="fieldspec">
+              <legend class=" reserve__legend">Специалист</legend>
 
               <label class="radio">
                 <input class="radio__input" type="radio" name="spec">
@@ -241,9 +242,9 @@
               </label>
             </fieldset>
 
-            <fieldset class="reserve__fieldset">
+            <fieldset class="reserve__fieldset" name="fielddata">
               <legend class="reserve__legend">Дата и время</legend>
-              <fieldset class="reserve__fieldset reserve__fieldset_sub">
+              <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldmonth">
                 <label class="radio">
                   <input class="radio__input" type="radio" name="month">
                   <span class="radio__label">Январь</span>
@@ -260,7 +261,7 @@
                 </label>
               </fieldset>
 
-              <fieldset class="reserve__fieldset reserve__fieldset_sub">
+              <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldday">
                 <label class="radio">
                   <input class="radio__input" type="radio" name="day">
                   <span class="radio__label">18 января</span>
@@ -282,7 +283,7 @@
                 </label>
               </fieldset>
 
-              <fieldset class="reserve__fieldset reserve__fieldset_sub">
+              <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldtime">
                 <label class="radio">
                   <input class="radio__input" type="radio" name="time">
                   <span class="radio__label">10:00-11:30</span>
@@ -321,7 +322,7 @@
             </fieldset>
           </div>
 
-          <button class="reserve__btn main-link">Записаться</button>
+          <button class="reserve__btn main-link" disabled id="btn">Записаться</button>
         </form>
       </div>
     </section>
@@ -330,7 +331,32 @@
 
   <footer class="footer">
     <div class="container">
+      <div class="footer__container">
+        <img class="footer__logo" src="img/logo.svg" alt="Логотип барбершопа" width="70" height="40">
+        <div class="footer__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="#price">Стоимость услуг</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#about">О нас</a>
+            </li>
+          </ul>
+        </div>
 
+        <ul class="footer__developers">
+          <li class="footer__developer">
+            Designer: <a class="footer__developer-link" href="https://t.me/Mrshmallowww" target="_blank">Anastasia
+              Ilina</a>
+          </li>
+          <li class="footer__developer">
+            Developer: <a class="footer__developer-link" href="https://t.me/Kromus275" target="_blank">Kromus
+              Shumilov</a>
+          </li>
+        </ul>
+
+        <p class="footer__copyright">© chik chik, 2023</p>
+      </div>
     </div>
   </footer>
 </body>
