@@ -225,10 +225,11 @@ const initReserve = () => {
   //блокируем все кнопки, кроме выбора услуги и далее поэтапно, 
   //после выбора последующих пунктов, разблокируем следующие
   const reserveForm = document.querySelector('.reserve__form');
-  const { fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = reserveForm;
+  const { fieldservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = reserveForm;
 
   addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn,]);
 
+  // логика выбора услуг, мастера и даты
   reserveForm.addEventListener('change', async (evt) => {
     const target = evt.target;
 
@@ -287,6 +288,34 @@ const initReserve = () => {
     if (target.name === 'time') {
       removeDisabled([btn]);
     }
+  });
+
+  // отправка данных на сервер
+  reserveForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(reserveForm);
+    const json = JSON.stringify(Object.fromEntries(formData));
+
+    const response = await fetch(`${API_URL}api/order`, {
+      method: 'post',
+      body: json,
+    });
+
+    const data = await response.json();
+
+    addDisabled([fieldservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn,]);
+
+    const orderSucces = document.createElement('p');
+    orderSucces.textContent = `
+      Спасибо за бронирование услуги! Ваш заказ №${data.id}. 
+      Мастер будет ждат Вас ${new Intl.DateTimeFormat('ru-RU', {
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(`${data.month}/${data.day}`))} в ${data.time}.
+    `;
+
+    reserveForm.append(orderSucces);
   });
 }
 
