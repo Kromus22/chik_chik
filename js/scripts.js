@@ -1,4 +1,5 @@
 const API_URL = 'https://educated-kindly-paddleboat.glitch.me/';
+const year = new Date().getFullYear();
 
 /*
 GET /api - получить список услуг
@@ -181,7 +182,7 @@ const renderMonth = (wrapper, data) => {
       <input class="radio__input" type="radio" name="month" value="${month}">
       <span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
       month: 'long'
-    }).format(new Date(month))}</span>
+    }).format(new Date(year, month))}</span>
     `;
     return label;
   });
@@ -198,7 +199,7 @@ const renderDay = (wrapper, data, month) => {
       <span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
       month: 'long',
       day: 'numeric'
-    }).format(new Date(`${month}/${day}`))}</span>
+    }).format(new Date(year, month, day))}</span>
     `;
     return label;
   });
@@ -312,7 +313,7 @@ const initReserve = () => {
       Мастер будет ждат Вас ${new Intl.DateTimeFormat('ru-RU', {
       month: 'long',
       day: 'numeric',
-    }).format(new Date(`${data.month}/${data.day}`))} в ${data.time}.
+    }).format(new Date(year, data.month, data.day))} в ${data.time}.
     `;
 
     reserveForm.append(orderSucces);
